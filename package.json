@@ -1,0 +1,27 @@
+{
+  "name": "amazon-storefront",
+  "version": "1.0.0",
+  "description": "Amazon storefront app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matlittle/Amazon-Storefront.git"
+  },
+  "keywords": [
+    "amazon",
+    "storefront"
+  ],
+  "author": "Mat Little",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matlittle/Amazon-Storefront/issues"
+  },
+  "homepage": "https://github.com/matlittle/Amazon-Storefront#readme",
+  "dependencies": {
+    "inquirer": "^4.0.1",
+    "mysql": "^2.15.0"
+  }
+}
