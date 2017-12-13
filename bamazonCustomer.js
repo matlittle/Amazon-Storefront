@@ -12,7 +12,9 @@ purchaseProduct().then(function() {
 
 
 async function purchaseProduct() {
-    const productId = await getProductId();
+    const productId = await getProductId().catch( (err) => {
+        console.error(err)
+    });
 
     console.log("Product ID ===============");
     console.log( productId );
@@ -23,13 +25,15 @@ async function purchaseProduct() {
 async function getProductId() {
     const query = 'SELECT item_id, product_name, price FROM products';
 
-    var result = new Promise(resolve => {
+    var result = new Promise( ( resolve, reject ) => {
         connection.query(query, async function(err, res){
             if(err) reject(err);
+            reject("err");
 
             resolve(res);
         });
-    }, reject => { });
-    
+    });
+
     return result;
 }
+

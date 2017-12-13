@@ -1,4 +1,4 @@
-CREATE DATABASE bamazon;
+CREATE DATABASE IF NOT EXISTS bamazon;
 
 USE bamazon;
 
