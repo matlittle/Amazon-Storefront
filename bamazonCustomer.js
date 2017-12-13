@@ -12,12 +12,14 @@ purchaseProduct().then(function() {
 
 
 async function purchaseProduct() {
-    const productId = await getProductId().catch( (err) => {
+    const productIdArr = await getProductId().catch( (err) => {
         console.error(err)
     });
 
     console.log("Product ID ===============");
-    console.log( productId );
+    console.log( productIdArr );
+
+    
 
     return;
 }
