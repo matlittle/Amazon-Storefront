@@ -16,8 +16,20 @@ async function purchaseProduct() {
         console.error(err)
     });
 
-    console.log("Product ID ===============");
+    var productDisplayArr = [];
+
+    productIdArr.forEach( (product) => {
+        let str = `ID: ${product.item_id}  |  `
+            + `Name: ${product.product_name}  |  `
+            + `Price: ${product.price}`;
+        productDisplayArr.push(str);
+    });
+
+    console.log("Product ID ================================================");
     console.log( productIdArr );
+
+    console.log("Product Display ===========================================");
+    console.log( productDisplayArr );
 
     
 
