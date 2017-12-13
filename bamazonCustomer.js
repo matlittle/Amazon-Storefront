@@ -28,7 +28,6 @@ async function getProductId() {
     var result = new Promise( ( resolve, reject ) => {
         connection.query(query, async function(err, res){
             if(err) reject(err);
-            reject("err");
 
             resolve(res);
         });
