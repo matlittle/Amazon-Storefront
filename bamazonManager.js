@@ -199,7 +199,7 @@ async function insertNewProduct(product) {
     const query = `INSERT INTO products SET ?`;
 
     return new Promise( (resolve, reject) => {
-        connection.query(query, [product], (err, res) => {
+        connection.query(query, [product], async (err, res) => {
             if(err) reject(err);
             resolve(res);
         });
