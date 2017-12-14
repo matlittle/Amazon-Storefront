@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/matlittle/Amazon-Storefront#readme",
   "dependencies": {
+    "console.table": "^0.9.1",
     "inquirer": "^4.0.1",
     "mysql": "^2.15.0"
   }
