@@ -10,15 +10,11 @@ purchaseProduct();
 
 
 async function purchaseProduct() {
-    const productArr = await getProductList().catch( (err) => {
-        console.error(err)
-    });
+    const productArr = await getProductList().catch(logError);
 
     const choices = buildProductQuestions(productArr);
     
-    const answer = await productSelectionPrompt(choices).catch( (err) => {
-        console.error(err);
-    });
+    const answer = await productSelectionPrompt(choices).catch(logError);
 
     const product = productArr.find( (obj) => {
         return obj.item_id === answer.item;
@@ -27,8 +23,9 @@ async function purchaseProduct() {
     const numInStock = await checkStock(answer.item);
 
     if( numInStock > parseInt(answer.count) ) {
-        await performTransaction(answer, numInStock);
-        let total = (parseInt(answer.count) * product.price).toFixed(2);;
+        let total = (parseInt(answer.count) * product.price).toFixed(2);
+        await performTransaction(answer, numInStock, total);
+
         console.log(`\nYour total will be $${total}\n`);
     } else {
         console.log("\nInsufficent quantity in stock!\n");
@@ -101,9 +98,10 @@ async function checkStock(id) {
     });
 }
 
-async function performTransaction(answer, stock) {
+async function performTransaction(answer, stock, total) {
     const query = `UPDATE products
-                    SET stock_quantity=${stock - parseInt(answer.count)}
+                    SET stock_quantity=${stock - parseInt(answer.count)},
+                        product_sales=product_sales+${total}
                     WHERE item_id=${answer.item}`;
     
     return new Promise ( (resolve, reject) => {
@@ -124,6 +122,10 @@ async function newTransactionPrompt() {
     return Inquirer.prompt(questions);
 }
 
+
+function logError(err) {
+    console.error(err);
+}
 
 function endConnection() {
     connection.end( (err) => {

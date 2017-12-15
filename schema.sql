@@ -2,14 +2,14 @@ CREATE DATABASE IF NOT EXISTS bamazon;
 
 USE bamazon;
 
-
+DROP TABLE IF EXISTS products;
 CREATE TABLE IF NOT EXISTS products (
     item_id INTEGER AUTO_INCREMENT NOT NULL,
     product_name VARCHAR(50) NOT NULL,
     department_name VARCHAR(50) NOT NULL,
     price DECIMAL(8, 2) NOT NULL,
     stock_quantity INTEGER NOT NULL,
-    product_sales DECIMAL(NOT NULL DEFAULT 0,
+    product_sales DECIMAL NOT NULL DEFAULT 0,
     PRIMARY KEY (item_id)
 );
 
@@ -27,6 +27,7 @@ INSERT INTO products (product_name, department_name, price, stock_quantity)
         ('Tomato', 'Produce', 0.75, 20);
 
 
+DROP TABLE IF EXISTS departments;
 CREATE TABLE IF NOT EXISTS departments (
     department_id INTEGER AUTO_INCREMENT NOT NULL,
     department_name VARCHAR(50) NOT NULL,

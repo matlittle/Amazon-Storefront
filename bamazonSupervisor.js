@@ -63,7 +63,7 @@ async function handleAction(action) {
 async function selectDepartmentSales() {
     const query = 
     `SELECT d.department_id,  d.department_name, d.over_head_costs, 
-        SUM(p.product_sales) AS product_sales, p.product_sales - d.over_head_costs AS total_profit
+        SUM(p.product_sales) AS product_sales, SUM(p.product_sales) - d.over_head_costs AS total_profit
         FROM departments AS d
         LEFT JOIN products AS p ON d.department_name = p.department_name
         GROUP BY p.department_name`;
