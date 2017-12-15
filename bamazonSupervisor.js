@@ -107,8 +107,7 @@ async function insertNewDepartment(department) {
     return new Promise( (resolve, reject) => {
         connection.query(query, [department], async (err, res) => {
             if(err) reject(err);
-            console.log("result");
-            console.log(res);
+
             resolve(res);
         });
     });
