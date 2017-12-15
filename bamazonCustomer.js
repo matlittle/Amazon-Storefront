@@ -6,9 +6,7 @@ const sqlCredentials = require('./sqlCredentials');
 const connection = MySQL.createConnection(sqlCredentials);
 
 
-purchaseProduct().then(function() {
-    console.log("\nDone");
-});
+purchaseProduct();
 
 
 async function purchaseProduct() {
